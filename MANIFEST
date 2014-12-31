@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Scrapinghub_Client.t
+lib/Scrapinghub/Client.pm
+lib/Scrapinghub/Request.pm
+lib/Scrapinghub/Request/Jobs.pm
