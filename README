@@ -19,7 +19,8 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-	* Test::More
+    * Test::More
+    * Test::Exception
     * Moo
     * MooX::Traits
 

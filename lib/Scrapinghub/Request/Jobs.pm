@@ -9,4 +9,9 @@ has 'endpoint' => (
     default => sub {'jobs/list.json'},
 );
 
+sub do {
+    # Stub function
+    return 1;
+}
+
 __PACKAGE__->meta->make_immutable;

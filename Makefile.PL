@@ -6,6 +6,7 @@ WriteMakefile(
     VERSION_FROM      => 'lib/Scrapinghub/Client.pm', # finds $VERSION
     PREREQ_PM         => {
         'Test::More'    => 0,
+        'Test::Exception' => 0,
         'Moo'           => 0,
         'MooX::Traits'  => 0,
     },

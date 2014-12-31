@@ -44,6 +44,11 @@ sub BUILD {
       }
  }
 
+sub do {
+    my $self = shift;
+
+    $self->request->do();
+};
 
  __PACKAGE__->meta->make_immutable;
 
