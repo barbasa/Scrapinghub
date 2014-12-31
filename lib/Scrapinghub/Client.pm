@@ -18,22 +18,22 @@ has 'url' => (
 );
 
 has 'agent' => (
-	is => 'ro',
-	default => sub { LWP::UserAgent->new }
+    is => 'ro',
+    default => sub { LWP::UserAgent->new }
 );
 
 has 'api_key' => (
-	is 		=> 'ro',
-	default => sub { $ENV{SH_APIKEY} },
+    is      => 'ro',
+    default => sub { $ENV{SH_APIKEY} },
 );
 
 has 'project_id' => (
-	is 			=> 'ro',
-	required 	=> 1,
+    is          => 'ro',
+    required    => 1,
 );
 
 has 'request' => (
-	is 			=> 'rw',
+    is          => 'rw',
 );
 
 sub BUILD {
