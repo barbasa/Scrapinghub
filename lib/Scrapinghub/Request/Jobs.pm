@@ -4,7 +4,7 @@ use Moo::Role;
 
 requires 'type';
 
-has 'uri' => (
+has 'endpoint' => (
 	is 		=> 'ro',
 	default => sub {'jobs/list.json'},
 );

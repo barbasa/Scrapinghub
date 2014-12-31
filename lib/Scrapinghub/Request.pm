@@ -2,14 +2,17 @@ package Scrapinghub::Request;
 
 use Moo;
 
-with 'MooX::Traits';
-
 has 'type' => (
-	is 			=> 'ro',
-	required 	=> 1,
+    is          => 'ro',
+    required    => 1,
 );
 
+sub BUILD {
+   my $self = shift;
 
-has '+_trait_namespace' => ( default => 'Scrapinghub::Request' );
+   require Moo::Role;
+   my $role = __PACKAGE__ . '::' . ucfirst($self->type);
+   Moo::Role->apply_roles_to_object($self, $role );
+};
 
 __PACKAGE__->meta->make_immutable;

@@ -3,6 +3,7 @@ Makefile.PL
 MANIFEST
 README
 t/Scrapinghub_Client.t
+t/Scrapinghub_Request.t
 lib/Scrapinghub/Client.pm
 lib/Scrapinghub/Request.pm
 lib/Scrapinghub/Request/Jobs.pm
