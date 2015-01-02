@@ -8,13 +8,13 @@ use LWP::UserAgent;
 use HTTP::Request;
 use HTTP::Headers;
 
-# use Scrapinghub::Request;
+use Scrapinghub::Request;
 
 our $VERSION = '0.01';
 
 has 'url' => (
     is      => 'ro',
-    default => sub { URI->new( 'https://storage.scrapinghub.com/items' ) }
+    default => sub { URI->new( 'https://storage.scrapinghub.com/' ) }
 );
 
 has 'agent' => (
@@ -32,7 +32,11 @@ has 'project_id' => (
     required    => 1,
 );
 
-has 'request' => (
+has 'last_request' => (
+    is          => 'rw',
+);
+
+has 'last_response' => (
     is          => 'rw',
 );
 
@@ -44,11 +48,28 @@ sub BUILD {
       }
  }
 
-sub do {
-    my $self = shift;
+sub make_request {
+    my ($self, $args) = @_;
 
-    $self->request->do();
+    my $req  = Scrapinghub::Request->new( type => $args->{type} );
+    $self->last_request($req);
+
+    my $resp = $self->_send_request();
+    $self->last_response($resp);
 };
+
+sub _send_request {
+    my ($self, ) = @_;
+
+    my $base_url = $self->url . $self->last_request->endpoint;
+    my $url_params = $self->last_request->build_url();
+
+    my $req = HTTP::Request->new(GET => $url );
+    $req->authorization_basic( $self->api_key, "" );
+    $req->header('Accept' => 'application/json');
+
+    return $self->agent->request($req);
+}
 
  __PACKAGE__->meta->make_immutable;
 

@@ -9,9 +9,8 @@ has 'endpoint' => (
     default => sub {'jobs/list.json'},
 );
 
-sub do {
-    # Stub function
-    return 1;
-}
+sub build_url {
+    my ($self,) = @_;
 
+}
 __PACKAGE__->meta->make_immutable;
